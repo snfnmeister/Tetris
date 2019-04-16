@@ -59,9 +59,69 @@ public class GameTetris {
         frame.setLocation(START_LOCATION, START_LOCATION);
         frame.setResizable(false);
 
+        canvasPanel.setBackground(Color.black); //bg colour
+
+        frame.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (!gameOver) {
+                    if (e.getKeyCode() == DOWN) figure.drop();
+                    if (e.getKeyCode() == UP) figure.rotate();
+                    if (e.getKeyCode() == LEFT || e.getKeyCode() == RIGHT) figure.move(e.getKeyCode());
+                }
+                canvasPanel.repaint();
+            }
+        });
+        frame.getContentPane().add(BorderLayout.CENTER, canvasPanel);
         frame.setVisible(true);
+
+        Arrays.fill(mine[FIELD_HEIGHT],1);
+
+        //main loop
+        while (!gameOver) {
+            try {
+                Thread.sleep(SHOW_DELAY);
+            } catch (Exception e) { e.printStackTrace(); }
+            canvasPanel.repaint();
+            if (figure.isTouchGround()) {
+                figure.leaveOnTheGround();
+                checkFilling();;
+                figure = new Figure();
+                gameOver = figure.isCrossGround();
+           } else {
+                figure.stepDown();
+            }
+        }
     }
+
+    void checkFilling() {
+
+    }
+
     class Figure {
+
+        boolean isCrossGround() {
+            return false;
+
+        }
+        boolean isTouchGround () {
+            return false;
+
+        }
+        void leaveOnTheGround() {
+
+        }
+        void stepDown() {
+
+        }
+        void drop() {
+
+        }
+        void move(int direction) {
+
+        }
+        void rotate () {
+
+        }
 
     }
 
@@ -71,7 +131,7 @@ public class GameTetris {
 
     public class Canvas extends JPanel {
         @Override
-        public void paint(Graphics g){
+        public void paint(Graphics g)  {
             super.paint(g);
         }
     }
