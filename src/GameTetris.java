@@ -1,6 +1,6 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.*;  // for make GUI-windows
+import java.awt.event.*; // catch events
+import javax.swing.*; // GUI
 import java.util.*;
 
 public class GameTetris {
@@ -18,7 +18,7 @@ public class GameTetris {
     final int RIGHT = 39;
     final int DOWN = 40;
     final int SHOW_DELAY = 350; // delay for animation
-    final int[][][] SHAPES = {
+    final int[][][] SHAPES = {                                                       // tetris figures
             {{0, 0, 0, 0}, {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {4, 0x00f0f0}}, // I
             {{0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {4, 0xf0f000}}, // O
             {{1, 0, 0, 0}, {1, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 0x0000f0}}, // J
@@ -26,7 +26,7 @@ public class GameTetris {
             {{0, 1, 1, 0}, {1, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 0x00f000}}, // S
             {{1, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 0xa000f0}}, // T
             {{1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 0xf00000}}  // Z
-    };
+    };                                                                      
     final int[] SCORES = {100, 300, 700, 1500};
     int gameScores = 0;
     int [][] mine = new int[FIELD_HEIGHT+1][FIELD_WIDTH];
@@ -35,7 +35,7 @@ public class GameTetris {
     Random random = new Random();
     Figure figure = new Figure();
     boolean gameOver = false;
-    final int[][] GAME_OVER_MSG = {
+    final int[][] GAME_OVER_MSG = { //message on screen
             {0,1,1,0,0,0,1,1,0,0,0,1,0,1,0,0,0,1,1,0},
             {1,0,0,0,0,1,0,0,1,0,1,0,1,0,1,0,1,0,0,1},
             {1,0,1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1},
@@ -50,7 +50,7 @@ public class GameTetris {
             {0,1,1,0,0,1,0,0,0,0,0,1,1,0,0,1,0,0,1,0}};
 
     public static void main(String[] args) {
-          new GameTetris().go();
+          new GameTetris().go(); //
     }
     void go() {
         frame = new JFrame(TITLE_OF_PROGRAM);
@@ -76,7 +76,7 @@ public class GameTetris {
 
         Arrays.fill(mine[FIELD_HEIGHT],1);
 
-        //main loop
+        //main super-loop
         while (!gameOver) {
             try {
                 Thread.sleep(SHOW_DELAY);
