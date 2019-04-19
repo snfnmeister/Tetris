@@ -31,7 +31,10 @@ public class GameTetris {
     int gameScores = 0;
     int [][] mine = new int[FIELD_HEIGHT+1][FIELD_WIDTH];
     JFrame frame;
-    Canvas canvasPanel = new Canvas();
+    /*A Canvas component represents a blank rectangular area of the screen onto which 
+    the application can draw or from which the application can trap input events from the user.
+    */
+    Canvas canvasPanel = new Canvas(); 
     Random random = new Random();
     Figure figure = new Figure();
     boolean gameOver = false;
